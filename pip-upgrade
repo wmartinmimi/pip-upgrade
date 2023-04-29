@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# get list of outdated packages
+packages=$(pip list -o | awk 'NR > 2 {print $1}')
+# loop and update packages
+for package in $packages; do
+  pip install --upgrade $package;
+done
